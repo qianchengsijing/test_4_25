@@ -119,3 +119,75 @@ while(p != NULL)
 	p = p->prior;
 while(p->prior != NULL)
 	p = p->prior;
+//循环链表
+//循环单链表
+typedef struct LNode
+{
+	int data;
+	struct LNode* next;
+}LNode,*Linklist;
+bool InitList(Linklist &L)
+{
+	L = (LNode*)malloc(sizeof(LNode));
+	if(L == NULL)
+		return false;
+	L->next = L;
+	return true;
+}
+//判断p结点是否为表尾结点
+bool isTail(Linklist L,LNode* p)
+{
+	if(p->next == L)
+		return true;
+	else
+		return false;
+}
+//循环双链表
+typedef struct DNode
+{
+	int data;
+	struct DNode* prior,* next;
+}LNode,*Linklist;
+bool InitList(Linklist &L)
+{
+	L = (LNode*)malloc(sizeof(LNode));
+	if(L == NULL)
+		return false;
+	L->prior = L;
+	L->next = L;
+	return true;
+}
+//静态链表
+//第一种
+#define MaxSize 10
+struct Node
+{
+	int data;
+	int next;
+};
+void testSLinklist()
+{
+	struct Node a[MaxSize];//a为一个10个Node型元素的数组
+}
+//第二种
+#define MaxSize 10
+typedef struct
+{
+	int data;
+	int next;
+}SLinklist[MaxSize];
+void testSLinklist()
+{
+	SLinklist a;//a为一个有10个Node型元素数组的静态链表
+}
+void testSLinklist()
+{
+	struct Node s;
+	printf("sizes=%d\n",sizeof(s));//8
+
+	struct Node a[MaxSize];
+	printf("sizea=%d\n",sizeof(a));//80
+
+	SLinklist b;
+	printf("sizeb=%d\n",sizeof(b));//80
+}
